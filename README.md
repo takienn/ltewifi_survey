@@ -31,7 +31,7 @@ wlp5s0: interface state UNINITIALIZED->ENABLED
 wlp5s0: AP-ENABLED
 </code></pre>
 
-4- Associate a client to this AP (a smart phone for instance) and run a flood ping from the AP to the Client )100,000 packets here)
+4- Associate a client to this AP (a smart phone for instance, note that you'll need to specify static IP configuration) and run a flood ping from the AP to the Client (100,000 packets here)
 <pre><code>
 ping -f -c 100000 DESTINATION_IP
 </code></pre>
