@@ -42,3 +42,5 @@ sudo ./plot_survey.sh INTERFACE_NAME
 </code></pre>
 
 6- On a different terminal and in the same directory run <code>gnuplot plot.gnu</code> 
+
+7- From matlab generate a LTE stream with the desired configuration and watch how the BUSY state rate evolves.
