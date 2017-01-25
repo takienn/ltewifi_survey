@@ -31,9 +31,16 @@ wlp5s0: interface state UNINITIALIZED->ENABLED
 wlp5s0: AP-ENABLED
 </code></pre>
 
-4- Run the plot_survey.sh (you might need to <code>chmod +x plot_survey.sh</code>)
+4- Associate a client to this AP (a smart phone for instance, note that you'll need to specify static IP configuration) and run a flood ping from the AP to the Client (100,000 packets here)
+<pre><code>
+ping -f -c 100000 DESTINATION_IP
+</code></pre>
+
+5- Run the plot_survey.sh (you might need to <code>chmod +x plot_survey.sh</code>)
 <pre><code>
 sudo ./plot_survey.sh INTERFACE_NAME
 </code></pre>
 
-5- On a different terminal and in the same directory run <code>gnuplot plot.gnu</code> 
+6- On a different terminal and in the same directory run <code>gnuplot plot.gnu</code> 
+
+7- From matlab generate a LTE stream with the desired configuration and watch how the BUSY state rate evolves.
