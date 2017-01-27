@@ -14,7 +14,7 @@ old_ct=0
 ct_offset=0
 
 rm plot.dat;
-
+printf "Time(s)\tBusy(%%)\tDwell(s)\n" >> plot.dat;
 while true; do
 	survey="$(iw dev $dev survey dump|grep -A 5 in\ use| sed 's/[^0-9]*//g')";
 	freq=$(echo $survey | cut -f1 -d\ );
@@ -48,7 +48,7 @@ while true; do
 
 	relative_time=$(bc <<< "scale=3;$channel_time/1000-$ct_offset/1000")
 	echo $relative_time
-	printf "$relative_time\t$dif_busy\n" >> plot.dat
+	printf "$relative_time\t$dif_busy\t$dif_ctime\n" >> plot.dat
 	
-	sleep 1
+	sleep .01
 done
