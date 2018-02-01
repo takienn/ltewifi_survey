@@ -38,17 +38,17 @@ while true; do
 	dif_rx=$(bc <<< "scale=3; 100*$dif_cr/$dif_ctime")
 	dif_tx=$(bc <<< "scale=3; 100*$dif_ct/$dif_ctime")
 
-	#printf "Channel Busy %%: $busy\n"
-	printf "Channel Busy %%: $dif_busy%% dwell time $dif_ctime ms\n"
 
 	old_ctime=$channel_time
 	old_cb=$channel_busy
 	old_cr=$channel_rx
 	old_ct=$channel_tx
 
-	relative_time=$(bc <<< "scale=3;$channel_time/1000-$ct_offset/1000")
+        printf "Channel Busy %%: $dif_busy%%\tMAC tx: $dif_tx%%\tMAC rx: $dif_rx%%\tdwell time: $dif_ctime ms\n"
+
+	relative_time=$(bc <<< "scale=3;$channel_time-$ct_offset")
 	echo $relative_time
-	printf "$relative_time\t$dif_busy\t$dif_ctime\n" >> plot.dat
+	printf "$relative_time\t$dif_idle\t$dif_rx\t$dif_tx\t$dif_ctime\n" >> plot.dat
 	
-	sleep .01
+	sleep 0.01
 done
